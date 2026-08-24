@@ -2,11 +2,29 @@ import time
 import requests
 import json
 from datetime import datetime
+import os
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import threading
 
 # إعدادات النظام والاتصال
 WHATSAPP_API_URL = "https://graph.facebook.com/v17.0/YOUR_PHONE_NUMBER_ID/messages"
 WHATSAPP_TOKEN = "YOUR_ACCESS_TOKEN"
 TARGET_PHONE = "YOUR_WHATSAPP_NUMBER"
+
+# سيرفر وهمي صغير جداً لإرضاء منصة Render وفتح البورت المطلوب
+class DummyHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"Bot is running 24/7 successfully!")
+    def log_message(self, format, *args):
+        pass # لإيقاف طباعة تفاصيل طلبات المتصفح المزعجة في السجل
+
+def run_dummy_server():
+    port = int(os.environ.get("PORT", 10000))
+    server = HTTPServer(('0.0.0.0', port), DummyHandler)
+    print(f"[{datetime.now()}] تم تشغيل سيرفر البورت الوهمي على المنفذ {port}")
+    server.serve_forever()
 
 def send_whatsapp_alert(message):
     """دالة لإرسال التنبيهات عبر الواتساب فور حدوث أي نشاط أو طلب"""
@@ -46,4 +64,9 @@ def run_engine():
             time.sleep(60)
 
 if __name__ == "__main__":
+    # تشغيل سيرفر البورت في الخلفية لكي لا يعطل مهام الأتمتة الأساسية
+    server_thread = threading.Thread(target=run_dummy_server, daemon=True)
+    server_thread.start()
+    
+    # تشغيل المحرك الأساسي
     run_engine()
