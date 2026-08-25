@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Server Guard | Enterprise Infrastructure & SEO Audit Engine</title>
+    <!-- Tailwind CSS CDN for Ultra-Fast Performance -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0a0b10',
+                        cardbg: '#12141c',
+                        accent: '#ef4444',
+                        neon: '#22c55e'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-darkbg text-gray-100 font-sans antialiased selection:bg-red-500 selection:text-white">
+
+    <!-- Top Urgency Banner (Live Active Users) -->
+    <div class="bg-red-600/10 border-b border-red-500/20 text-red-400 text-xs py-2 px-4 text-center font-medium flex justify-center items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+        <span>System Alert: There are <strong id="active-users" class="text-white font-bold">1,428</strong> websites undergoing live audit right now. Instant repair slots are extremely limited!</span>
+    </div>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        
+        <!-- Header & Global Corporate Identity -->
+        <div class="text-center space-y-4 mb-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-xs text-slate-300">
+                <span>🛡️ Apex Server Guard — Silicon Valley & London Infrastructure</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+                Detect Critical Vulnerabilities & <span class="text-red-500">Fix Them in Minutes</span>
+            </h1>
+            <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
+                Advanced engineering engine that instantly audits your server infrastructure and SEO errors, delivering a complete fix to protect your revenue before it's too late.
+            </p>
+        </div>
+
+        <!-- Live Audit Input Box -->
+        <div class="bg-cardbg border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden mb-12">
+            <div class="absolute -top-24 -right-24 w-48 h-48 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="space-y-4">
+                <label for="site-url" class="block text-sm font-semibold text-slate-300">Enter your website or company URL to start instant audit:</label>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input type="text" id="site-url" placeholder="https://your-website.com" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-red-500 transition">
+                    <button onclick="runAudit()" id="audit-btn" class="bg-red-600 hover:bg-red-700 active:scale-95 text-white font-bold px-8 py-3.5 rounded-xl transition shadow-lg shadow-red-600/25 flex items-center justify-center gap-2">
+                        <span>Run Instant Audit</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading-state" class="hidden mt-8 text-center space-y-3 py-6">
+                <div class="inline-block w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
+                <p class="text-sm text-slate-400 font-mono" id="loading-text">Connecting to audit servers in Europe and the United States...</p>
+            </div>
+
+            <!-- Results & Shock Report Box -->
+            <div id="results-box" class="hidden mt-8 pt-8 border-t border-slate-800 space-y-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-red-500/5 border border-red-500/20 p-4 rounded-xl gap-4">
+                    <div>
+                        <span class="text-xs text-red-400 font-semibold uppercase tracking-wider">Critical Technical Evaluation</span>
+                        <h3 class="text-xl font-bold text-white mt-0.5" id="res-url-title">Your website is at risk of losing customers</h3>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs text-slate-400 block">Estimated Monthly Loss:</span>
+                        <span class="text-2xl font-black text-red-500" id="res-loss">$4,250</span>
+                    </div>
+                </div>
+
+                <!-- Discovered Issues -->
+                <div class="space-y-3" id="issues-list">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <!-- Shock Pricing, Urgency & Checkout -->
+                <div class="bg-gradient-to-r from-slate-900 to-slate-950 border border-slate-700/80 rounded-xl p-6 text-center space-y-4 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">Limited Time Discount</div>
+                    
+                    <div class="space-y-1">
+                        <span class="text-xs text-slate-400">Comprehensive Engineering & Repair Cost (Current Session):</span>
+                        <div class="flex items-center justify-center gap-3">
+                            <span class="text-slate-500 line-through text-lg">$499</span>
+                            <span class="text-4xl font-black text-white">$79 <span class="text-xs text-slate-400 font-normal">One-time payment</span></span>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-slate-400 max-w-md mx-auto">
+                        Our engineering team will patch vulnerabilities, accelerate server response, and fix SEO schemas within 2 hours max.
+                    </p>
+
+                    <!-- Secure Instant Checkout Button -->
+                    <a href="https://your-payment-gateway-link.com" target="_blank" class="block w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-extrabold py-4 rounded-xl shadow-xl shadow-emerald-600/20 transition transform active:scale-95 text-lg">
+                        Fix & Secure My Website Now ($79) ⚡
+                    </a>
+
+                    <!-- Absolute Trust Badges -->
+                    <div class="pt-4 border-t border-slate-800/80 flex flex-wrap justify-center items-center gap-4 text-xs text-slate-400">
+                        <span class="flex items-center gap-1">🔒 256-bit Bank Encryption</span>
+                        <span>•</span>
+                        <span class="flex items-center gap-1">🛡️ 100% Money-Back Guarantee</span>
+                        <span>•</span>
+                        <span class="flex items-center gap-1">⚡ Instant 2-Hour Execution</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Global "About Us" Section (Eliminating Trust Deficit) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left mb-12">
+            <div class="bg-cardbg border border-slate-800 p-6 rounded-xl space-y-2">
+                <div class="text-red-500 text-xl font-bold">14,200+</div>
+                <h4 class="font-bold text-white text-sm">Websites Secured</h4>
+                <p class="text-xs text-slate-400">An enterprise engineering framework operating 24/7 to protect and scale digital assets worldwide.</p>
+            </div>
+            <div class="bg-cardbg border border-slate-800 p-6 rounded-xl space-y-2">
+                <div class="text-red-500 text-xl font-bold">24/7</div>
+                <h4 class="font-bold text-white text-sm">Dedicated Engineering Team</h4>
+                <p class="text-xs text-slate-400">Experts in server optimization and infrastructure architecture dedicated to driving latency to zero.</p>
+            </div>
+            <div class="bg-cardbg border border-slate-800 p-6 rounded-xl space-y-2">
+                <div class="text-red-500 text-xl font-bold">100%</div>
+                <h4 class="font-bold text-white text-sm">Risk-Free Guarantee</h4>
+                <p class="text-xs text-slate-400">If you don't notice tangible improvements, your funds are fully refunded transparently with zero hassle.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- JavaScript for Dynamic Counters & Live Audit Simulation -->
+    <script>
+        // Realistic Live Active Users Ticker
+        setInterval(() => {
+            const el = document.getElementById('active-users');
+            if(el) {
+                let current = parseInt(el.innerText.replace(',', ''));
+                let change = Math.floor(Math.random() * 5) - 2;
+                el.innerText = (current + change).toLocaleString();
+            }
+        }, 4000);
+
+        // Live Audit Simulation & Report Render
+        async function runAudit() {
+            const urlInput = document.getElementById('site-url').value.trim();
+            if(!urlInput) {
+                alert('Please enter your website URL first!');
+                return;
+            }
+
+            const btn = document.getElementById('audit-btn');
+            const loading = document.getElementById('loading-state');
+            const results = document.getElementById('results-box');
+
+            btn.disabled = true;
+            btn.classList.add('opacity-50');
+            loading.classList.remove('hidden');
+            results.classList.add('hidden');
+
+            // Visual Audit Steps Simulation
+            const texts = [
+                "Connecting to audit servers in Europe and the United States...",
+                "Analyzing server response time and caching latency metrics...",
+                "Scanning structure faults and missing search engine meta tags...",
+                "Calculating projected financial losses for the domain..."
+            ];
+            
+            let i = 0;
+            const textInterval = setInterval(() => {
+                i = (i + 1) % texts.length;
+                document.getElementById('loading-text').innerText = texts[i];
+            }, 800);
+
+            try {
+                const response = await fetch('/api/audit', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ url: urlInput })
+                });
+                const data = await response.json();
+
+                clearInterval(textInterval);
+                loading.classList.add('hidden');
+                btn.disabled = false;
+                btn.classList.remove('opacity-50');
+
+                // Populate Results
+                document.getElementById('res-url-title').innerText = `Audit Report for: ${data.url}`;
+                document.getElementById('res-loss').innerText = `$${data.estimated_loss.toLocaleString()}`;
+
+                let issuesHtml = '';
+                data.issues.forEach(issue => {
+                    issuesHtml += `
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex items-start gap-3">
+                            <span class="text-red-500 text-lg">⚠️</span>
+                            <div>
+                                <h5 class="text-sm font-bold text-white">${issue.name}</h5>
+                                <p class="text-xs text-slate-400 mt-0.5">${issue.desc}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                document.getElementById('issues-list').innerHTML = issuesHtml;
+                results.classList.remove('hidden');
+
+                // Smooth Scroll to Results
+                results.scrollIntoView({ behavior: 'smooth' });
+
+            } catch (err) {
+                clearInterval(textInterval);
+                loading.classList.add('hidden');
+                btn.disabled = false;
+                btn.classList.remove('opacity-50');
+                alert('Connection error occurred, please try again.');
+            }
+        }
+    </script>
+</body>
+</html>
