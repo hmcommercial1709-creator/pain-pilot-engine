@@ -39,7 +39,7 @@ class DummyHandler(BaseHTTPRequestHandler):
 def run_dummy_server():
     port = int(os.environ.get("PORT", 10000))
     server = HTTPServer(('0.0.0.0', port), DummyHandler)
-    print(f"[{datetime.now()}] Web server started on port {port}", flush=True)
+    print(f"[{datetime.now()}] Web server started and listening on port {port}", flush=True)
     server.serve_forever()
 
 def send_email_message(to_email, subject, body_text):
@@ -65,9 +65,9 @@ def send_email_message(to_email, subject, body_text):
         return False
 
 def run_immediate_test():
-    """دالة اختبار فورية تعمل بمجرد تشغيل السيرفر"""
+    """دالة اختبار فورية تعمل بعد جاهزية الشبكة"""
     print(f"[{datetime.now()}] جاري تنفيذ دالة الإرسال الفوري للاختبار...", flush=True)
-    time.sleep(3) # انتظار قصير لضمان استقرار السيرفر
+    time.sleep(5) # انتظار ثوانٍ قليلة لضمان استقرار اتصال الشبكة بالكامل
     for company in TEST_COMPANY_QUEUE:
         subject = f"Strategic Performance Audit & Revenue Optimization Report for {company['name']}"
         body = (
@@ -85,12 +85,12 @@ def run_immediate_test():
 if __name__ == "__main__":
     print(f"[{datetime.now()}] تشغيل نظام PainPilot AI...", flush=True)
     
-    # تشغيل الاختبار الفوري أولاً قبل خيط السيرفر لنرى النتيجة فوراً في الـ Logs
-    run_immediate_test()
-    
-    # تشغيل سيرفر الـ Web في الخلفية للحفاظ على استمرار الخدمة
+    # 1. تشغيل السيرفر أولاً في خلفية الأكواد لفتح المنافذ واتصال الشبكة
     server_thread = threading.Thread(target=run_dummy_server, daemon=True)
     server_thread.start()
+    
+    # 2. تشغيل الاختبار الفوري لإرسال الإيميل بعد فتح الشبكة
+    run_immediate_test()
     
     while True:
         time.sleep(3600)
