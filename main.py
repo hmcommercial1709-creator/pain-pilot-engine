@@ -20,35 +20,38 @@ SENDER_EMAIL = "afolky10@gmail.com"  # إيميلك الذي تخرج منه ا�
 SENDER_PASSWORD = "lttgkiavoniisnyk"   # كلمة مرور التطبيق (App Password)
 # ======================================================================
 
-# قائمة المواقع المستهدفة (النظام سيفحصها، يستخرج إيميلاتها تلقائياً، ويبعث لها)
-GLOBAL_TARGETS = [
-    {"name": "Metro Cleaners UK", "url": "https://example.com", "market": "UK"},
-    {"name": "Austin Local Bistro", "url": "https://httpbin.org/html", "market": "USA"},
+# قائمة عينة موسعة لمحاكاة آلاف الشركات والمتاجر في أمريكا، بريطانيا، وفرنسا وأوروبا
+# (يمكنك لاحقاً توسيع هذه القائمة أو ربطها بمحرك جلب مخصص)
+GLOBAL_MASS_TARGETS = [
+    {"name": "London Elite Cleaners", "url": "https://example.com", "market": "UK"},
+    {"name": "Paris Gourmet Bistro", "url": "https://httpbin.org/html", "market": "France"},
+    {"name": "Austin Prime Services", "url": "https://example.org", "market": "USA"},
+    {"name": "Berlin Tech Solutions", "url": "https://httpbin.org/delay/1", "market": "Germany"},
 ]
 
 class DummyHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.end_headers()
-        self.wfile.write(b"PainPilot Autonomous Lead Engine is Live 24/7!")
+        self.wfile.write(b"PainPilot Autonomous Mass Audit Radar is Live 24/7!")
     def log_message(self, format, *args):
         pass
 
 def run_dummy_server():
-    """تشغيل سيرفر الويب للحفاظ على نشاط الخدمة على Render"""
+    """تشغيل سيرفر الويب الخفيف للحفاظ على استمرار عمل الخدمة على Render"""
     port = int(os.environ.get("PORT", 10000))
     server = HTTPServer(('0.0.0.0', port), DummyHandler)
     print(f"[{datetime.now()}] Web server running on port {port}", flush=True)
     server.serve_forever()
 
-def extract_company_email_and_audit(target):
-    """يفحص الموقع، يستخرج الإيميل تلقائياً، ويرصد المشاكل التقنية"""
+def extract_email_and_audit(target):
+    """رادار الفحص والفلترة الصارمة: يستخرج الإيميل ويفحص وجود مشاكل حقيقية فقط"""
     url = target["url"]
     name = target["name"]
-    print(f"[{datetime.now()}] جاري فحص واستخراج بيانات الموقع: {name} ({url})...", flush=True)
+    print(f"[{datetime.now()}] [رادار الفحص] جاري فحص وتمشيط موقع: {name} ({url})...", flush=True)
     
     try:
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) PainPilot-Autonomous-Auditor'}
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) PainPilot-Mass-Auditor'}
         response = requests.get(url, headers=headers, timeout=12)
         latency = round(response.elapsed.total_seconds() * 1000, 2)
         
@@ -56,22 +59,20 @@ def extract_company_email_and_audit(target):
             soup = BeautifulSoup(response.text, 'html.parser')
             title = soup.title.string if soup.title else "Business Website"
             
-            # البحث عن الإيميلات داخل صفحة الموقع الرئيسية باستخدام التعبير المنتظم (Regex)
+            # استخراج الإيميل تلقائياً من محتوى الموقع
             page_text = response.text
             email_pattern = r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+'
             found_emails = re.findall(email_pattern, page_text)
             
-            # تصفية الإيميلات المستخرجة (تجنب الإيميلات الوهمية أو امتدادات الصور مثل .png)
             valid_emails = [
                 e for e in found_emails 
-                if not any(ext in e.lower() for ext in ['.png', '.jpg', '.gif', '.svg', 'example.com', 'w3.org', 'wordpress'])
+                if not any(ext in e.lower() for ext in ['.png', '.jpg', '.gif', '.svg', 'example.com', 'w3.org', 'wordpress', 'sentry'])
             ]
             
             target_email = ""
             if valid_emails:
-                target_email = valid_emails[0] # يأخذ أول إيميل حقيقي يتم العثور عليه في الموقع
+                target_email = valid_emails[0]
             else:
-                # إذا لم يجد إيميل ظاهر، يقوم بتوليد الإيميل الرسمي بناءً على نطاق الموقع تلقائياً
                 domain_match = re.search(r'https?://(?:www\.)?([^/]+)', url)
                 if domain_match:
                     domain = domain_match.group(1)
@@ -79,30 +80,35 @@ def extract_company_email_and_audit(target):
                 else:
                     target_email = "contact@business-target.com"
 
-            # رصد المشاكل التقنية
+            # ----------------- الفلتر الصارم (رصد المشاكل الحقيقية فقط) -----------------
             issues = []
-            if latency > 350:
-                issues.append("Server response time is too slow, causing mobile visitors to bounce.")
-            if not soup.find('meta', attrs={'name': 'description'}):
-                issues.append("Missing meta descriptions, which hurts organic search visibility.")
             
-            if not issues:
-                issues.append("Sub-optimal caching headers and mobile conversion friction.")
-
+            # شرط البطء الشديد (أكثر من 350 ميلي ثانية يعتبر موقعاً متأثراً وفيه هبوط)
+            if latency > 350:
+                issues.append(f"Critical server response latency ({latency} ms), causing mobile visitors to bounce.")
+            
+            # غياب وصف السيو
+            if not soup.find('meta', attrs={'name': 'description'}):
+                issues.append("Missing meta descriptions, heavily hurting organic search acquisition from Google.")
+            
+            # إذا كان الموقع سليماً 100% ولا توجد مشاكل تذكر، نعتبره "سليم تماماً"
+            has_real_pain = len(issues) > 0
+            
             return {
                 "success": True,
+                "has_real_pain": has_real_pain,
                 "title": title,
                 "latency": latency,
                 "issues": issues,
                 "extracted_email": target_email
             }
         else:
-            return {"success": False, "error": f"HTTP Status {response.status_code}"}
+            return {"success": False, "has_real_pain": False, "error": f"HTTP Status {response.status_code}"}
     except Exception as e:
-        return {"success": False, "error": str(e)}
+        return {"success": False, "has_real_pain": False, "error": str(e)}
 
-def send_email_to_company(target_email, company_name, audit_data):
-    """إرسال التقرير تلقائياً إلى الإيميل المستخرج"""
+def send_value_first_email(target_email, company_name, audit_data):
+    """إرسال تقرير القيمة وحل المشكلة حصرياً لمن لديه مشكلة حقيقية (بدون ذكر سعر)"""
     try:
         subject = f"Quick technical insight regarding {company_name} digital performance"
         issues_list = "\n".join([f"- {iss}" for iss in audit_data.get('issues', [])])
@@ -122,7 +128,7 @@ def send_email_to_company(target_email, company_name, audit_data):
         
         msg = MIMEMultipart()
         msg['From'] = SENDER_EMAIL
-        msg['To'] = target_email  # الإيميل الذي تم استخراجه تلقائياً من موقع الشركة
+        msg['To'] = target_email  # يرسل للشركة المستهدفة فقط
         msg['Subject'] = subject
         msg.attach(MIMEText(body, 'plain', 'utf-8'))
         
@@ -131,39 +137,49 @@ def send_email_to_company(target_email, company_name, audit_data):
         server.login(SENDER_EMAIL, SENDER_PASSWORD)
         server.sendmail(SENDER_EMAIL, target_email, msg.as_string())
         server.quit()
-        print(f"[{datetime.now()}] [AUTONOMOUS EMAIL SENT] تم استخراج الإيميل وإرسال التقرير بنجاح إلى شركة {company_name} عبر العنوان: {target_email}", flush=True)
+        print(f"[{datetime.now()}] [صيد ثمين - تم الإرسال بنجاح] تمت محاكاة المشكلة وإرسال التقرير التقني حصرياً لشركة: {company_name} ({target_email})", flush=True)
         return True
     except Exception as e:
-        print(f"[{datetime.now()}] [EMAIL ERROR] فشل إرسال البريد المستخرج: {e}", flush=True)
+        print(f"[{datetime.now()}] [EMAIL ERROR] فشل إرسال البريد: {e}", flush=True)
         return False
 
-def run_global_mass_engine():
-    """حلقة العمل المستمرة للبحث، الفحص، الاستخراج، والإرسال الذاتي"""
-    print(f"[{datetime.now()}] بدء تشغيل المحرك الذاتي لاستخراج الإيميلات وإرسال التقارير...", flush=True)
+def run_mass_radar_engine():
+    """حلقة العمل المستمرة لتمشيط الآلاف وفلترة السليم، وإرسال البريد حصرياً لمن لديه مشكلة حقيقية"""
+    print(f"[{datetime.now()}] بدء عمل الرادار الآلي الشامل لتمشيط الشركات الأجنبية...", flush=True)
     time.sleep(10)
     
     while True:
-        for target in GLOBAL_TARGETS:
-            result = extract_company_email_and_audit(target)
+        checked_count = 0
+        emailed_count = 0
+        
+        for target in GLOBAL_MASS_TARGETS:
+            checked_count += 1
+            result = extract_email_and_audit(target)
+            
             if result.get("success"):
-                extracted_email = result.get("extracted_email")
-                print(f"[{datetime.now()}] تم بنجاح فحص {target['name']} واستخراج البريد تلقائياً: {extracted_email}", flush=True)
-                
-                # إرسال الإيميل مباشرة للعنوان المستخرج بدون أي تدخل بشري
-                send_email_to_company(extracted_email, target["name"], result)
+                if result.get("has_real_pain"):
+                    # وجدنا مشكلة صحيحة 100%! هنا فقط نرسل الإيميل لكي لا نحرق الإيميل عشوائياً
+                    extracted_email = result.get("extracted_email")
+                    print(f"[{datetime.now()}] [تنبيه: وجدنا مشكلة!] {target['name']} يعاني من أخطاء تقنية. جاري إرسال البريد المستهدف...", flush=True)
+                    send_value_first_email(extracted_email, target["name"], result)
+                    emailed_count += 1
+                else:
+                    # الموقع سليم وأموره تمام التمام -> نتخطاه بصمت تام دون إزعاج ودون إرسال أي شي
+                    print(f"[{datetime.now()}] [موقع سليم] {target['name']} يعمل بكفاءة ولا توجد مشاكل تستدعي التواصل. تم تخطيه بصمت.", flush=True)
             
-            time.sleep(5)
+            # فاصل زمني قصير جداً بين فحص كل موقع لحماية السيرفر وعدم الحظر
+            time.sleep(3)
             
-        print(f"[{datetime.now()}] اكتملت الدورة الحالية. جاري إعادة التمشيط...", flush=True)
-        time.sleep(14400)
+        print(f"[{datetime.now()}] [تقرير الجولة] تم فحص {checked_count} شركة، وإرسال {emailed_count} إيميل فقط لمن لديهم مشاكل حقيقية. الدخول في وضع التمشيط الخلفي...", flush=True)
+        time.sleep(14400) # الانتظار للجولة التالية
 
 if __name__ == "__main__":
-    print(f"[{datetime.now()}] إقلاع نظام PainPilot الذاتي بالكامل...", flush=True)
+    print(f"[{datetime.now()}] إقلاع نظام PainPilot الرادار الذكي بالكامل...", flush=True)
     
     server_thread = threading.Thread(target=run_dummy_server, daemon=True)
     server_thread.start()
     
-    engine_thread = threading.Thread(target=run_global_mass_engine, daemon=True)
+    engine_thread = threading.Thread(target=run_mass_radar_engine, daemon=True)
     engine_thread.start()
     
     while True:
