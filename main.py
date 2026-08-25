@@ -8,6 +8,7 @@ import threading
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import sys
 import uuid
 
 # ==================== إعدادات البريد الإلكتروني (SMTP) ====================
@@ -38,11 +39,13 @@ class DummyHandler(BaseHTTPRequestHandler):
 def run_dummy_server():
     port = int(os.environ.get("PORT", 10000))
     server = HTTPServer(('0.0.0.0', port), DummyHandler)
+    print(f"[{datetime.now()}] Web server started on port {port}", flush=True)
     server.serve_forever()
 
 def send_email_message(to_email, subject, body_text):
     """دالة إرسال البريد الإلكتروني الاحترافي"""
     try:
+        print(f"[{datetime.now()}] المحاولة للاتصال بخادم البريد وإرسال الرسالة إلى {to_email}...", flush=True)
         msg = MIMEMultipart()
         msg['From'] = SENDER_EMAIL
         msg['To'] = to_email
@@ -55,15 +58,16 @@ def send_email_message(to_email, subject, body_text):
         server.login(SENDER_EMAIL, SENDER_PASSWORD)
         server.sendmail(SENDER_EMAIL, to_email, msg.as_string())
         server.quit()
-        print(f"[{datetime.now()}] [TEST SUCCESS] تم إرسال الإيميل التجريبي بنجاح إلى: {to_email}")
+        print(f"[{datetime.now()}] [TEST SUCCESS] تم إرسال الإيميل التجريبي بنجاح إلى: {to_email}", flush=True)
         return True
     except Exception as e:
-        print(f"[{datetime.now()}] [TEST ERROR] فشل إرسال الإيميل: {e}")
+        print(f"[{datetime.now()}] [TEST ERROR] فشل إرسال الإيميل بسبب الخطأ: {e}", flush=True)
         return False
 
 def run_immediate_test():
     """دالة اختبار فورية تعمل بمجرد تشغيل السيرفر"""
-    print(f"[{datetime.now()}] تشغيل اختبار الإرسال الفوري...")
+    print(f"[{datetime.now()}] جاري تنفيذ دالة الإرسال الفوري للاختبار...", flush=True)
+    time.sleep(3) # انتظار قصير لضمان استقرار السيرفر
     for company in TEST_COMPANY_QUEUE:
         subject = f"Strategic Performance Audit & Revenue Optimization Report for {company['name']}"
         body = (
@@ -79,11 +83,14 @@ def run_immediate_test():
         send_email_message(company["email"], subject, body)
 
 if __name__ == "__main__":
+    print(f"[{datetime.now()}] تشغيل نظام PainPilot AI...", flush=True)
+    
+    # تشغيل الاختبار الفوري أولاً قبل خيط السيرفر لنرى النتيجة فوراً في الـ Logs
+    run_immediate_test()
+    
+    # تشغيل سيرفر الـ Web في الخلفية للحفاظ على استمرار الخدمة
     server_thread = threading.Thread(target=run_dummy_server, daemon=True)
     server_thread.start()
-    
-    # تنفيذ الاختبار الفوري للإيميل بمجرد الإقلاع
-    run_immediate_test()
     
     while True:
         time.sleep(3600)
