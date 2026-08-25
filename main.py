@@ -14,16 +14,15 @@ import uuid
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 SENDER_EMAIL = "afolky10@gmail.com"
-SENDER_PASSWORD = "lttgkiavoniisnyk"  # تم إضافة كلمة المرور الخاصة بالتطبيق هنا
+SENDER_PASSWORD = "lttgkiavoniisnyk"
 # ======================================================================
 
-# إيميلك الشخصي للتجربة الفورية والتأكد من وصول الرسائل
 TEST_COMPANY_QUEUE = [
     {
         "id": str(uuid.uuid4())[:8],
         "name": "Test Enterprise",
         "url": "https://example.com",
-        "email": "afolky10@gmail.com",  # الإرسال لإيميلك مباشرة للتأكد
+        "email": "afolky10@gmail.com",
         "state": "NEW"
     }
 ]
@@ -63,7 +62,7 @@ def send_email_message(to_email, subject, body_text):
         return False
 
 def run_immediate_test():
-    """دالة اختبار فورية تعمل بمجرد تشغيل السيرفر للتأكد من وصول الإيميل"""
+    """دالة اختبار فورية تعمل بمجرد تشغيل السيرفر"""
     print(f"[{datetime.now()}] تشغيل اختبار الإرسال الفوري...")
     for company in TEST_COMPANY_QUEUE:
         subject = f"Strategic Performance Audit & Revenue Optimization Report for {company['name']}"
@@ -80,13 +79,11 @@ def run_immediate_test():
         send_email_message(company["email"], subject, body)
 
 if __name__ == "__main__":
-    # تشغيل سيرفر الـ Web للحفاظ على نشاط Render على مدار الساعة
     server_thread = threading.Thread(target=run_dummy_server, daemon=True)
     server_thread.start()
     
     # تنفيذ الاختبار الفوري للإيميل بمجرد الإقلاع
     run_immediate_test()
     
-    # حلقة الحفاظ على التشغيل المستمر
     while True:
         time.sleep(3600)
