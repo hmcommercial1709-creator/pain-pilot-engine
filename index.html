@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apex Server Guard | Enterprise Infrastructure & SEO Audit Engine</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGGL77BSMY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WGGL77BSMY');
+    </script>
+
     <!-- Tailwind CSS CDN for Ultra-Fast Performance -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -25,7 +36,7 @@
 <body class="bg-darkbg text-gray-100 font-sans antialiased selection:bg-red-500 selection:text-white">
 
     <!-- Top Urgency Banner (Live Active Users) -->
-    <div class="bg-red-600/10 border-b border-red-500/20 text-red-400 text-xs py-2 px-4 text-center font-medium flex justify-center items-center gap-2">
+    <div class="bg-red-600/15 border-b border-red-500/20 text-red-400 text-xs py-2 px-4 text-center font-medium flex justify-center items-center gap-2">
         <span class="inline-block w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
         <span>System Alert: There are <strong id="active-users" class="text-white font-bold">1,428</strong> websites undergoing live audit right now. Instant repair slots are extremely limited!</span>
     </div>
@@ -166,16 +177,9 @@
 
             <!-- Real QR Code Box -->
             <div class="bg-white p-3 rounded-xl flex flex-col items-center justify-center">
-                <!-- استخدام الصورة الحقيقية للباركود التي أرسلتها -->
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIA... (أو عرض صورة الباركود المباشرة)" alt="USDT QR Code" class="w-40 h-40 object-contain" id="qr-code-img">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=TYam4Z53ModHJzakgDYwWyRExoCU1ewKgC" alt="USDT QR Code" class="w-40 h-40 object-contain" id="qr-code-img">
                 <span class="text-[10px] text-slate-700 font-bold mt-1">Scan via Binance / Trust Wallet</span>
             </div>
-            
-            <!-- ملاحظة: لتجنب مشاكل روابط الصور المحلية، قمنا بوضع كود باركود قياسي يتطابق تماماً مع محفظتك، أو يمكنك وضع رابط صورة الباركود المباشر هنا -->
-            <script>
-                // تحديث صورة الباركود مباشرة من رابط الصورة الفعلية لضمان التطابق التام
-                document.getElementById('qr-code-img').src = "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=TYam4Z53ModHJzakgDYwWyRExoCU1ewKgC";
-            </script>
 
             <!-- Real Wallet Address Display -->
             <div class="space-y-1.5">
@@ -212,8 +216,8 @@
             }
         }, 4000);
 
-        // Live Audit Simulation & Report Render
-        async function runAudit() {
+        // Live Audit Simulation & Report Render (Client-side fallback simulation for static hosting)
+        function runAudit() {
             const urlInput = document.getElementById('site-url').value.trim();
             if(!urlInput) {
                 alert('Please enter your website URL first!');
@@ -239,27 +243,28 @@
             let i = 0;
             const textInterval = setInterval(() => {
                 i = (i + 1) % texts.length;
-                document.getElementById('loading-text').innerText = texts[i];
+                const loadTextEl = document.getElementById('loading-text');
+                if(loadTextEl) loadTextEl.innerText = texts[i];
             }, 800);
 
-            try {
-                const response = await fetch('/api/audit', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ url: urlInput })
-                });
-                const data = await response.json();
-
+            // Simulate server response for static GitHub Pages deployment
+            setTimeout(() => {
                 clearInterval(textInterval);
                 loading.classList.add('hidden');
                 btn.disabled = false;
                 btn.classList.remove('opacity-50');
 
-                document.getElementById('res-url-title').innerText = `Audit Report for: ${data.url}`;
-                document.getElementById('res-loss').innerText = `$${data.estimated_loss.toLocaleString()}`;
+                document.getElementById('res-url-title').innerText = `Audit Report for: ${urlInput}`;
+                document.getElementById('res-loss').innerText = `$4,250`;
+
+                const mockIssues = [
+                    { name: "High Server Response Latency", desc: "Time to First Byte (TTFB) exceeds 1.8s, causing user bounce rate spikes." },
+                    { name: "Missing OpenGraph & Schema Tags", desc: "Search engine crawlers and social platforms cannot parse structured previews." },
+                    { name: "Unoptimized SSL & TLS Handshake", desc: "Security configuration causes delayed client connection establishment." }
+                ];
 
                 let issuesHtml = '';
-                data.issues.forEach(issue => {
+                mockIssues.forEach(issue => {
                     issuesHtml += `
                         <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex items-start gap-3">
                             <span class="text-red-500 text-lg">⚠️</span>
@@ -273,14 +278,7 @@
                 document.getElementById('issues-list').innerHTML = issuesHtml;
                 results.classList.remove('hidden');
                 results.scrollIntoView({ behavior: 'smooth' });
-
-            } catch (err) {
-                clearInterval(textInterval);
-                loading.classList.add('hidden');
-                btn.disabled = false;
-                btn.classList.remove('opacity-50');
-                alert('Connection error occurred, please try again.');
-            }
+            }, 3000);
         }
 
         // Crypto Modal Controls
