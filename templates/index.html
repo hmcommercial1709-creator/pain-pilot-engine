@@ -1,310 +1,51 @@
-<!DOCTYPE html>
-<html lang="en" class="dark">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex Server Guard | Enterprise Infrastructure & SEO Audit Engine</title>
-    <!-- Tailwind CSS CDN for Ultra-Fast Performance -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        darkbg: '#0a0b10',
-                        cardbg: '#12141c',
-                        accent: '#ef4444',
-                        neon: '#22c55e'
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SiteMedic — Free Website Error Audit</title>
+  <meta name="description" content="Scan any public website for technical, SEO, security, performance, mobile and accessibility problems. Get a clear report and optional 24-hour expert repair for €19.99.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="{{ url_for('index', _external=True) }}">
+  <link rel="alternate" hreflang="en" href="{{ url_for('index', _external=True) }}">
+  <link rel="alternate" hreflang="x-default" href="{{ url_for('index', _external=True) }}">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="SiteMedic">
+  <meta property="og:title" content="SiteMedic — Free Website Error Audit">
+  <meta property="og:description" content="Find SEO, speed, security, mobile and accessibility problems with a transparent website report.">
+  <meta property="og:url" content="{{ url_for('index', _external=True) }}">
+  <meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#071018">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"{{ url_for('index', _external=True) }}#website","url":"{{ url_for('index', _external=True) }}","name":"SiteMedic","inLanguage":"en"},{"@type":"WebApplication","name":"SiteMedic Website Audit","url":"{{ url_for('index', _external=True) }}","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"featureList":["Website SEO audit","Website performance check","HTTPS and security header check","Mobile readiness check","Accessibility check"]},{"@type":"Service","name":"24-Hour Expert Website Repair","provider":{"@type":"Organization","name":"SiteMedic"},"areaServed":"Worldwide","offers":{"@type":"Offer","price":"19.99","priceCurrency":"EUR","availability":"https://schema.org/InStock"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the free website audit check?","acceptedAnswer":{"@type":"Answer","text":"It checks a public page for HTTP delivery, response time, HTTPS, SEO metadata, headings, canonical tags, mobile viewport, image alternative text, link labels and common browser security headers."}},{"@type":"Question","name":"Does the scan change my website?","acceptedAnswer":{"@type":"Answer","text":"No. The automated scan reads one public page and does not log in or make changes."}},{"@type":"Question","name":"What is included in the €19.99 repair offer?","acceptedAnswer":{"@type":"Answer","text":"A specialist reviews the report, confirms authorization, access and scope, then applies the applicable reported fixes with a 24-hour target after access is received."}}]}]}</script>
+  <style>
+    :root{--bg:#071018;--panel:#0d1a24;--line:#1d3342;--text:#edf7fb;--muted:#91a9b7;--cyan:#35d5c5;--red:#ff5d6c;--amber:#ffc857;--blue:#58a6ff}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% -20%,#15394a 0,var(--bg) 42%);color:var(--text);font:15px/1.6 Inter,system-ui,sans-serif}button,input{font:inherit}.wrap{width:min(1060px,calc(100% - 32px));margin:auto}.nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px}.logo{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),#1684d6);color:#041018}.pill{border:1px solid #216459;background:#0d2d2b;color:#8af2e8;padding:6px 11px;border-radius:99px;font-size:12px}.hero{text-align:center;padding:72px 0 38px}.eyebrow{color:var(--cyan);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:12px}.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.06;letter-spacing:-.045em;margin:14px auto;max-width:850px}.hero h1 span{background:linear-gradient(90deg,var(--cyan),#67adff);color:transparent;background-clip:text}.hero p{color:var(--muted);font-size:17px;max-width:690px;margin:0 auto}.scanner{margin:35px auto 68px;background:linear-gradient(180deg,#0e1d28,#09141d);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:0 30px 80px #0008}.form{display:flex;gap:10px}.form input{flex:1;min-width:0;padding:16px;border-radius:12px;border:1px solid #294656;background:#061019;color:white;outline:0}.form input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #35d5c520}.primary{border:0;border-radius:12px;background:linear-gradient(135deg,var(--cyan),#2b9dde);color:#041219;font-weight:900;padding:15px 22px;cursor:pointer}.primary:disabled{opacity:.55;cursor:wait}.micro{font-size:12px;color:var(--muted);margin:10px 2px 0}.loading{display:none;text-align:center;padding:35px}.spin{width:34px;height:34px;border:3px solid #244252;border-top-color:var(--cyan);border-radius:50%;animation:spin .8s linear infinite;margin:auto}@keyframes spin{to{transform:rotate(360deg)}}.error{display:none;color:#ffb3bb;background:#36151d;border:1px solid #69303a;border-radius:11px;padding:12px;margin-top:16px}.results{display:none;margin-top:28px;border-top:1px solid var(--line);padding-top:28px}.score-row{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}.score{width:112px;height:112px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--cyan) var(--score),#1d3342 0);position:relative}.score:after{content:"";position:absolute;inset:9px;border-radius:50%;background:#0a1720}.score strong{z-index:1;font-size:31px}.facts{display:flex;flex-wrap:wrap;gap:9px}.fact{background:#0a151e;border:1px solid var(--line);border-radius:9px;padding:7px 10px;color:var(--muted);font-size:12px}.issues{display:grid;gap:10px;margin:22px 0}.issue{border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:11px;background:#0a151e;padding:15px}.issue.critical{border-left-color:var(--red)}.issue.info{border-left-color:var(--blue)}.issue-head{display:flex;justify-content:space-between;gap:12px}.issue h3{font-size:15px;margin:0}.tag{text-transform:uppercase;font-size:10px;font-weight:900;color:var(--muted)}.issue p{margin:5px 0 0;color:var(--muted);font-size:13px}.fix{color:#b9f3ec!important}.offer{display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center;background:linear-gradient(135deg,#12352f,#102338);border:1px solid #2d7468;border-radius:17px;padding:24px;margin-top:25px}.price{font-size:42px;line-height:1;font-weight:950}.offer h2{margin:4px 0}.offer p{margin:4px 0;color:#b8cbd5}.offer button{min-width:210px}.disclaimer{font-size:11px;color:var(--muted);margin-top:14px}.section{padding:30px 0 70px}.section-title{text-align:center;margin-bottom:28px}.section-title h2{font-size:32px;margin:6px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{border:1px solid var(--line);background:var(--panel);border-radius:15px;padding:20px}.card b{display:block;margin:8px 0}.card p{color:var(--muted);font-size:13px;margin:0}.num{color:var(--cyan);font-weight:900}.trust{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;color:var(--muted);font-size:12px;margin-top:24px}.footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:12px;text-align:center}.modal{display:none;position:fixed;inset:0;background:#020609db;z-index:10;place-items:center;padding:18px}.modal.open{display:grid}.modal-card{width:min(490px,100%);background:#0e1c26;border:1px solid #2b4858;border-radius:18px;padding:25px}.modal-head{display:flex;justify-content:space-between;align-items:center}.close{background:none;border:0;color:white;font-size:25px;cursor:pointer}.modal input{width:100%;padding:13px;margin:5px 0 12px;background:#07121a;color:white;border:1px solid var(--line);border-radius:9px}.modal label{font-size:12px;color:var(--muted)}.check{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--muted);margin:5px 0 16px}.check input{width:auto;margin-top:4px}.success{display:none;padding:18px;background:#10352f;border-radius:11px;color:#a2f4e8}@media(max-width:720px){.hero{padding-top:45px}.form,.offer{grid-template-columns:1fr;display:grid}.grid{grid-template-columns:1fr}.score-row{grid-template-columns:1fr;text-align:center}.score{margin:auto}.facts{justify-content:center}.offer button{width:100%}.scanner{padding:18px}}
+  </style>
 </head>
-<body class="bg-darkbg text-gray-100 font-sans antialiased selection:bg-red-500 selection:text-white">
-
-    <!-- Top Urgency Banner (Live Active Users) -->
-    <div class="bg-red-600/10 border-b border-red-500/20 text-red-400 text-xs py-2 px-4 text-center font-medium flex justify-center items-center gap-2">
-        <span class="inline-block w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
-        <span>System Alert: There are <strong id="active-users" class="text-white font-bold">1,428</strong> websites undergoing live audit right now. Instant repair slots are extremely limited!</span>
-    </div>
-
-    <!-- Main Container -->
-    <main class="max-w-4xl mx-auto px-4 py-12">
-        
-        <!-- Header & Global Corporate Identity -->
-        <div class="text-center space-y-4 mb-12">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-xs text-slate-300">
-                <span>🛡️ Apex Server Guard — Silicon Valley & London Infrastructure</span>
-            </div>
-            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-                Detect Critical Vulnerabilities & <span class="text-red-500">Fix Them in Minutes</span>
-            </h1>
-            <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
-                Advanced engineering engine that instantly audits your server infrastructure and SEO errors, delivering a complete fix to protect your revenue before it's too late.
-            </p>
-        </div>
-
-        <!-- Live Audit Input Box -->
-        <div class="bg-cardbg border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden mb-12">
-            <div class="absolute -top-24 -right-24 w-48 h-48 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            
-            <div class="space-y-4">
-                <label for="site-url" class="block text-sm font-semibold text-slate-300">Enter your website or company URL to start instant audit:</label>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <input type="text" id="site-url" placeholder="https://your-website.com" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-red-500 transition">
-                    <button onclick="runAudit()" id="audit-btn" class="bg-red-600 hover:bg-red-700 active:scale-95 text-white font-bold px-8 py-3.5 rounded-xl transition shadow-lg shadow-red-600/25 flex items-center justify-center gap-2">
-                        <span>Run Instant Audit</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Loading State -->
-            <div id="loading-state" class="hidden mt-8 text-center space-y-3 py-6">
-                <div class="inline-block w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
-                <p class="text-sm text-slate-400 font-mono" id="loading-text">Connecting to audit servers in Europe and the United States...</p>
-            </div>
-
-            <!-- Results & Shock Report Box -->
-            <div id="results-box" class="hidden mt-8 pt-8 border-t border-slate-800 space-y-6">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-red-500/5 border border-red-500/20 p-4 rounded-xl gap-4">
-                    <div>
-                        <span class="text-xs text-red-400 font-semibold uppercase tracking-wider">Critical Technical Evaluation</span>
-                        <h3 class="text-xl font-bold text-white mt-0.5" id="res-url-title">Your website is at risk of losing customers</h3>
-                    </div>
-                    <div class="text-right">
-                        <span class="text-xs text-slate-400 block">Estimated Monthly Loss:</span>
-                        <span class="text-2xl font-black text-red-500" id="res-loss">$4,250</span>
-                    </div>
-                </div>
-
-                <!-- Discovered Issues -->
-                <div class="space-y-3" id="issues-list">
-                    <!-- Populated dynamically -->
-                </div>
-
-                <!-- Shock Pricing, Urgency & Checkout -->
-                <div class="bg-gradient-to-r from-slate-900 to-slate-950 border border-slate-700/80 rounded-xl p-6 text-center space-y-4 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">Limited Time Discount</div>
-                    
-                    <div class="space-y-1">
-                        <span class="text-xs text-slate-400">Comprehensive Engineering & Repair Cost (Current Session):</span>
-                        <div class="flex items-center justify-center gap-3">
-                            <span class="text-slate-500 line-through text-lg">$499</span>
-                            <span class="text-4xl font-black text-white">$79 <span class="text-xs text-slate-400 font-normal">One-time payment</span></span>
-                        </div>
-                    </div>
-
-                    <p class="text-xs text-slate-400 max-w-md mx-auto">
-                        Our engineering team will patch vulnerabilities, accelerate server response, and fix SEO schemas within 2 hours max.
-                    </p>
-
-                    <!-- Secure Global Crypto Checkout Button -->
-                    <button onclick="openCryptoModal()" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-extrabold py-4 rounded-xl shadow-xl shadow-emerald-600/20 transition transform active:scale-95 text-lg flex items-center justify-center gap-2">
-                        <span>Pay Securely with Crypto ($79) ⚡</span>
-                    </button>
-
-                    <!-- Absolute Trust Badges -->
-                    <div class="pt-4 border-t border-slate-800/80 flex flex-wrap justify-center items-center gap-4 text-xs text-slate-400">
-                        <span class="flex items-center gap-1">🔒 Global Crypto Gateway</span>
-                        <span>•</span>
-                        <span class="flex items-center gap-1">🛡️ 100% Money-Back Guarantee</span>
-                        <span>•</span>
-                        <span class="flex items-center gap-1">⚡ Instant 2-Hour Execution</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Global "About Us" Section -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left mb-12">
-            <div class="bg-cardbg border border-slate-800 p-6 rounded-xl space-y-2">
-                <div class="text-red-500 text-xl font-bold">14,200+</div>
-                <h4 class="font-bold text-white text-sm">Websites Secured</h4>
-                <p class="text-xs text-slate-400">An enterprise engineering framework operating 24/7 to protect and scale digital assets worldwide.</p>
-            </div>
-            <div class="bg-cardbg border border-slate-800 p-6 rounded-xl space-y-2">
-                <div class="text-red-500 text-xl font-bold">24/7</div>
-                <h4 class="font-bold text-white text-sm">Dedicated Engineering Team</h4>
-                <p class="text-xs text-slate-400">Experts in server optimization and infrastructure architecture dedicated to driving latency to zero.</p>
-            </div>
-            <div class="bg-cardbg border border-slate-800 p-6 rounded-xl space-y-2">
-                <div class="text-red-500 text-xl font-bold">100%</div>
-                <h4 class="font-bold text-white text-sm">Risk-Free Guarantee</h4>
-                <p class="text-xs text-slate-400">If you don't notice tangible improvements, your funds are fully refunded transparently with zero hassle.</p>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Professional Real Crypto Gateway Modal -->
-    <div id="crypto-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl relative animate-in fade-in zoom-in duration-200">
-            
-            <!-- Modal Header -->
-            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                <div class="flex items-center gap-2">
-                    <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <h3 class="text-base font-bold text-white">USDT (TRC20) Secure Deposit</h3>
-                </div>
-                <button onclick="closeCryptoModal()" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
-            </div>
-
-            <!-- Amount & Status -->
-            <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 flex justify-between items-center">
-                <div>
-                    <span class="text-[11px] text-slate-400 block">Amount Due:</span>
-                    <span class="text-lg font-black text-emerald-400">$79.00 USDT</span>
-                </div>
-                <div class="text-right">
-                    <span class="text-[11px] text-slate-400 block">Network Fee:</span>
-                    <span class="text-xs font-semibold text-emerald-500">0 Fee (Best)</span>
-                </div>
-            </div>
-
-            <!-- Real QR Code Box -->
-            <div class="bg-white p-3 rounded-xl flex flex-col items-center justify-center">
-                <!-- استخدام الصورة الحقيقية للباركود التي أرسلتها -->
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIA... (أو عرض صورة الباركود المباشرة)" alt="USDT QR Code" class="w-40 h-40 object-contain" id="qr-code-img">
-                <span class="text-[10px] text-slate-700 font-bold mt-1">Scan via Binance / Trust Wallet</span>
-            </div>
-            
-            <!-- ملاحظة: لتجنب مشاكل روابط الصور المحلية، قمنا بوضع كود باركود قياسي يتطابق تماماً مع محفظتك، أو يمكنك وضع رابط صورة الباركود المباشر هنا -->
-            <script>
-                // تحديث صورة الباركود مباشرة من رابط الصورة الفعلية لضمان التطابق التام
-                document.getElementById('qr-code-img').src = "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=TYam4Z53ModHJzakgDYwWyRExoCU1ewKgC";
-            </script>
-
-            <!-- Real Wallet Address Display -->
-            <div class="space-y-1.5">
-                <label class="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider">TRC20 Deposit Address:</label>
-                <div class="flex gap-2">
-                    <input type="text" id="wallet-address" readonly value="TYam4Z53ModHJzakgDYwWyRExoCU1ewKgC" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-emerald-400 font-mono text-xs focus:outline-none">
-                    <button onclick="copyWallet()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 rounded-xl text-xs font-bold transition">Copy</button>
-                </div>
-                <p id="copy-feedback" class="text-[10px] text-emerald-500 hidden font-medium">Address copied to clipboard successfully!</p>
-            </div>
-
-            <!-- Confirmation Action -->
-            <div class="space-y-2 pt-1">
-                <button onclick="confirmPayment()" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-emerald-600/20 text-sm">
-                    I Have Sent the Payment ⚡
-                </button>
-                <p class="text-[10px] text-slate-500 text-center">
-                    Min deposit: 0.1 USDT. Automatically processed upon blockchain confirmation.
-                </p>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- JavaScript for Dynamic Counters, Audit & Crypto Gateway Modal -->
-    <script>
-        // Realistic Live Active Users Ticker
-        setInterval(() => {
-            const el = document.getElementById('active-users');
-            if(el) {
-                let current = parseInt(el.innerText.replace(',', ''));
-                let change = Math.floor(Math.random() * 5) - 2;
-                el.innerText = (current + change).toLocaleString();
-            }
-        }, 4000);
-
-        // Live Audit Simulation & Report Render
-        async function runAudit() {
-            const urlInput = document.getElementById('site-url').value.trim();
-            if(!urlInput) {
-                alert('Please enter your website URL first!');
-                return;
-            }
-
-            const btn = document.getElementById('audit-btn');
-            const loading = document.getElementById('loading-state');
-            const results = document.getElementById('results-box');
-
-            btn.disabled = true;
-            btn.classList.add('opacity-50');
-            loading.classList.remove('hidden');
-            results.classList.add('hidden');
-
-            const texts = [
-                "Connecting to audit servers in Europe and the United States...",
-                "Analyzing server response time and caching latency metrics...",
-                "Scanning structure faults and missing search engine meta tags...",
-                "Calculating projected financial losses for the domain..."
-            ];
-            
-            let i = 0;
-            const textInterval = setInterval(() => {
-                i = (i + 1) % texts.length;
-                document.getElementById('loading-text').innerText = texts[i];
-            }, 800);
-
-            try {
-                const response = await fetch('/api/audit', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ url: urlInput })
-                });
-                const data = await response.json();
-
-                clearInterval(textInterval);
-                loading.classList.add('hidden');
-                btn.disabled = false;
-                btn.classList.remove('opacity-50');
-
-                document.getElementById('res-url-title').innerText = `Audit Report for: ${data.url}`;
-                document.getElementById('res-loss').innerText = `$${data.estimated_loss.toLocaleString()}`;
-
-                let issuesHtml = '';
-                data.issues.forEach(issue => {
-                    issuesHtml += `
-                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex items-start gap-3">
-                            <span class="text-red-500 text-lg">⚠️</span>
-                            <div>
-                                <h5 class="text-sm font-bold text-white">${issue.name}</h5>
-                                <p class="text-xs text-slate-400 mt-0.5">${issue.desc}</p>
-                            </div>
-                        </div>
-                    `;
-                });
-                document.getElementById('issues-list').innerHTML = issuesHtml;
-                results.classList.remove('hidden');
-                results.scrollIntoView({ behavior: 'smooth' });
-
-            } catch (err) {
-                clearInterval(textInterval);
-                loading.classList.add('hidden');
-                btn.disabled = false;
-                btn.classList.remove('opacity-50');
-                alert('Connection error occurred, please try again.');
-            }
-        }
-
-        // Crypto Modal Controls
-        function openCryptoModal() {
-            document.getElementById('crypto-modal').classList.remove('hidden');
-        }
-
-        function closeCryptoModal() {
-            document.getElementById('crypto-modal').classList.add('hidden');
-        }
-
-        function copyWallet() {
-            const copyText = document.getElementById('wallet-address');
-            copyText.select();
-            navigator.clipboard.writeText(copyText.value);
-            const feedback = document.getElementById('copy-feedback');
-            feedback.classList.remove('hidden');
-            setTimeout(() => { feedback.classList.add('hidden'); }, 3000);
-        }
-
-        function confirmPayment() {
-            alert('Payment notification received! Our automated node is monitoring your TRC20 address. Once the 79 USDT transfer is confirmed on the blockchain, the engineering team will instantly dispatch your site repair report.');
-            closeCryptoModal();
-        }
-    </script>
+<body>
+  <nav class="wrap nav"><div class="brand"><span class="logo">✓</span> SiteMedic</div><span class="pill">● Audit engine online</span></nav>
+  <main>
+    <section class="wrap hero"><div class="eyebrow">Website health & growth audit</div><h1>Find what is <span>hurting your website</span></h1><p>Run a transparent technical scan for SEO, performance, security, mobile and accessibility issues—then get a prioritized report you can act on.</p></section>
+    <section class="wrap scanner">
+      <form class="form" id="audit-form"><input id="url" type="text" inputmode="url" autocomplete="url" placeholder="https://yourwebsite.com" aria-label="Website URL" required><button class="primary" id="scan" type="submit">Run free audit →</button></form>
+      <p class="micro">Public pages only · No login needed · We do not change your website during the scan</p>
+      <div class="loading" id="loading"><div class="spin"></div><p id="loading-text">Connecting securely to the website…</p></div><div class="error" id="error"></div>
+      <div class="results" id="results">
+        <div class="score-row"><div class="score" id="score"><strong id="score-value">0</strong></div><div><div class="eyebrow">Automated audit completed</div><h2 id="result-url">Website report</h2><div class="facts" id="facts"></div></div></div>
+        <div class="issues" id="issues"></div>
+        <div class="offer"><div><div class="eyebrow">Optional expert repair service</div><h2>Fix the reported issues within 24 hours</h2><p>A specialized team reviews the report, confirms access and scope, and implements the applicable fixes.</p><div class="price">€19.99</div><p>One-time service fee · no subscription</p></div><button class="primary" id="order-btn" type="button">Request the 24-hour fix</button></div>
+        <p class="disclaimer" id="disclaimer"></p>
+      </div>
+    </section>
+    <section class="wrap section"><div class="section-title"><div class="eyebrow">Clear and verifiable</div><h2>What the scanner checks</h2></div><div class="grid"><div class="card"><span class="num">01</span><b>Technical & performance</b><p>HTTP status, redirects, response time, payload size and mobile readiness.</p></div><div class="card"><span class="num">02</span><b>SEO & accessibility</b><p>Titles, descriptions, canonical tags, headings, images and link labels.</p></div><div class="card"><span class="num">03</span><b>Security basics</b><p>HTTPS, mixed content and recommended browser security headers.</p></div></div><div class="trust"><span>✓ Real measured results</span><span>✓ No fabricated revenue claims</span><span>✓ Scope confirmed before work</span><span>✓ 24-hour target after access</span></div></section>
+    <section class="wrap section"><div class="section-title"><div class="eyebrow">Website problem library</div><h2>Diagnose the problem visitors are searching for</h2></div><div class="grid"><a class="card" href="/guides/website-seo-audit"><b>Website SEO audit</b><p>Titles, canonical URLs, indexing signals and page structure.</p></a><a class="card" href="/guides/website-speed-test"><b>Website speed test</b><p>Slow response, heavy pages, caching and mobile performance.</p></a><a class="card" href="/guides/website-security-check"><b>Website security check</b><p>HTTPS, mixed content and protective browser headers.</p></a><a class="card" href="/guides/mobile-friendly-test"><b>Mobile-friendly test</b><p>Responsive viewport and mobile usability fundamentals.</p></a><a class="card" href="/guides/website-accessibility-check"><b>Accessibility check</b><p>Images, links and page structure for more visitors.</p></a><a class="card" href="/guides/fix-website-errors"><b>Fix website errors</b><p>A practical repair workflow for common website faults.</p></a></div></section>
+  </main>
+  <footer class="footer">© 2026 SiteMedic · Automated reports are diagnostic snapshots, not guarantees of rankings or security.</footer>
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-card"><div class="modal-head"><div><div class="eyebrow">Secure service request</div><h2 id="modal-title">24-hour website fix · €19.99</h2></div><button class="close" id="close" aria-label="Close">×</button></div><div id="request-form"><p style="color:var(--muted)">Send your details to reserve the repair. No work begins until the team confirms the exact scope and access required.</p><label>Email</label><input id="email" type="email" placeholder="you@company.com" required><label>Website</label><input id="order-url" type="url" readonly><label class="check"><input id="consent" type="checkbox"> I own or am authorized to request changes to this website and agree to be contacted about this request.</label><button class="primary" id="submit-request" style="width:100%">Continue to secure payment</button></div><div class="success" id="success">Your request is ready. Connect a verified payment provider and support inbox before launch to process the €19.99 order safely.</div></div></div>
+  <script>
+    const $=id=>document.getElementById(id), form=$('audit-form'), loading=$('loading'), results=$('results'), error=$('error'); let auditedUrl='';
+    const escapeHtml=value=>String(value).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    form.addEventListener('submit',async e=>{e.preventDefault();error.style.display='none';results.style.display='none';loading.style.display='block';$('scan').disabled=true;const lines=['Connecting securely to the website…','Inspecting page structure and metadata…','Reviewing security and accessibility signals…','Prioritizing verified findings…'];let n=0,t=setInterval(()=>$('loading-text').textContent=lines[++n%lines.length],850);try{const response=await fetch('/api/audit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:$('url').value})});const data=await response.json();if(!response.ok)throw new Error(data.message||'Audit failed.');render(data)}catch(ex){error.textContent=ex.message;error.style.display='block'}finally{clearInterval(t);loading.style.display='none';$('scan').disabled=false}});
+    function render(d){auditedUrl=d.final_url;$('score-value').textContent=d.score;$('score').style.setProperty('--score',d.score+'%');$('result-url').textContent=d.final_url;$('facts').innerHTML=`<span class="fact">HTTP ${d.http_status}</span><span class="fact">${d.response_ms} ms</span><span class="fact">${d.counts.critical} critical</span><span class="fact">${d.counts.warning} warnings</span>`;$('issues').innerHTML=d.issues.length?d.issues.map(i=>`<article class="issue ${escapeHtml(i.severity)}"><div class="issue-head"><h3>${escapeHtml(i.title)}</h3><span class="tag">${escapeHtml(i.category)} · ${escapeHtml(i.severity)}</span></div><p>${escapeHtml(i.detail)}</p><p class="fix"><b>Recommended fix:</b> ${escapeHtml(i.fix)}</p></article>`).join(''):'<article class="issue info"><h3>No issues detected by this automated page scan</h3><p>A deeper multi-page and server-side review may still find opportunities.</p></article>';$('disclaimer').textContent=d.disclaimer;results.style.display='block';results.scrollIntoView({behavior:'smooth',block:'start'})}
+    $('order-btn').onclick=()=>{$('order-url').value=auditedUrl;$('modal').classList.add('open')};$('close').onclick=()=>$('modal').classList.remove('open');$('modal').onclick=e=>{if(e.target===$('modal'))$('modal').classList.remove('open')};
+    $('submit-request').onclick=()=>{if(!$('email').checkValidity())return $('email').reportValidity();if(!$('consent').checked)return alert('Please confirm that you are authorized to request work on this website.');$('request-form').style.display='none';$('success').style.display='block'};
+  </script>
 </body>
 </html>
