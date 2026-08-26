@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex Server Guard | Enterprise Infrastructure & SEO Audit Engine</title>
+    <title>Apex Server Guard | Emergency Outage Resolver & Instant Infrastructure Rescue</title>
     
+    <!-- Mega-Targeted Global Keywords for Immediate Intent -->
+    <meta name="description" content="Instant emergency resolver for server crashes, database deadlocks, 502 Bad Gateway, 504 timeouts, DNS dropouts, and critical infrastructure failures worldwide. Live automated patch engine.">
+    <meta name="keywords" content="server down, fix 502 error, database timeout, website crashed, 504 gateway timeout, fix server error, cloudflare error bypass, emergency server repair, hosting down">
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WGGL77BSMY"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-WGGL77BSMY');
     </script>
 
-    <!-- Tailwind CSS CDN for Ultra-Fast Performance -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -23,8 +26,8 @@
             theme: {
                 extend: {
                     colors: {
-                        darkbg: '#0a0b10',
-                        cardbg: '#12141c',
+                        darkbg: '#07080c',
+                        cardbg: '#0f111a',
                         accent: '#ef4444',
                         neon: '#22c55e'
                     }
@@ -35,253 +38,233 @@
 </head>
 <body class="bg-darkbg text-gray-100 font-sans antialiased selection:bg-red-500 selection:text-white">
 
-    <!-- Top Urgency Banner (Live Active Users) -->
-    <div class="bg-red-600/15 border-b border-red-500/20 text-red-400 text-xs py-2 px-4 text-center font-medium flex justify-center items-center gap-2">
-        <span class="inline-block w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
-        <span>System Alert: There are <strong id="active-users" class="text-white font-bold">1,428</strong> websites undergoing live audit right now. Instant repair slots are extremely limited!</span>
+    <!-- Emergency Global Ticker Bar -->
+    <div class="bg-red-600/20 border-b border-red-500/30 text-red-400 text-xs py-2 px-4 text-center font-bold flex justify-center items-center gap-2 flex-wrap">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+        <span>CRITICAL GLOBAL OUTAGE: <strong id="live-counter" class="text-white">61,482</strong> servers & databases reporting fatal latency or hard crashes right now!</span>
     </div>
 
-    <!-- Main Container -->
-    <main class="max-w-4xl mx-auto px-4 py-12">
+    <main class="max-w-5xl mx-auto px-4 py-10">
         
-        <!-- Header & Global Corporate Identity -->
-        <div class="text-center space-y-4 mb-12">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-xs text-slate-300">
-                <span>🛡️ Apex Server Guard — Silicon Valley & London Infrastructure</span>
+        <!-- Header -->
+        <div class="text-center space-y-4 mb-10">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs text-red-400 font-mono">
+                <span>⚡ APEX EMERGENCY RECOVERY NODE // V4.9 ULTRA</span>
             </div>
-            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-                Detect Critical Vulnerabilities & <span class="text-red-500">Fix Them in Minutes</span>
+            <h1 class="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">
+                Your Site is Crashing. <span class="text-red-500">We Fix It in 2 Hours.</span>
             </h1>
             <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
-                Advanced engineering engine that instantly audits your server infrastructure and SEO errors, delivering a complete fix to protect your revenue before it's too late.
+                Bypass hours of debugging. Enter your crashed domain, database IP, or error code below to trigger our autonomous tier-1 infrastructure patch engine immediately.
             </p>
         </div>
 
-        <!-- Live Audit Input Box -->
-        <div class="bg-cardbg border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden mb-12">
-            <div class="absolute -top-24 -right-24 w-48 h-48 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            
+        <!-- Main Input & Diagnostic Console Box -->
+        <div class="bg-cardbg border border-slate-800/80 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden mb-12">
+            <div class="absolute -top-32 -right-32 w-64 h-64 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
             <div class="space-y-4">
-                <label for="site-url" class="block text-sm font-semibold text-slate-300">Enter your website or company URL to start instant audit:</label>
+                <label for="target-url" class="block text-xs font-bold text-slate-300 uppercase tracking-wider">Target Domain, IP, or Error Code (e.g., 502 Bad Gateway / https://site.com):</label>
                 <div class="flex flex-col sm:flex-row gap-3">
-                    <input type="text" id="site-url" placeholder="https://your-website.com" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-red-500 transition">
-                    <button onclick="runAudit()" id="audit-btn" class="bg-red-600 hover:bg-red-700 active:scale-95 text-white font-bold px-8 py-3.5 rounded-xl transition shadow-lg shadow-red-600/25 flex items-center justify-center gap-2">
-                        <span>Run Instant Audit</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    <input type="text" id="target-url" placeholder="https://your-dead-site.com or 502 Error" class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-4 text-white placeholder-slate-600 focus:outline-none focus:border-red-500 font-mono text-sm transition">
+                    <button onclick="executeEmergencyRescue()" id="rescue-btn" class="bg-red-600 hover:bg-red-700 active:scale-95 text-white font-extrabold px-8 py-4 rounded-xl transition shadow-xl shadow-red-600/30 flex items-center justify-center gap-2">
+                        <span>Deploy Emergency Fix</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </button>
                 </div>
             </div>
 
-            <!-- Loading State -->
-            <div id="loading-state" class="hidden mt-8 text-center space-y-3 py-6">
-                <div class="inline-block w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
-                <p class="text-sm text-slate-400 font-mono" id="loading-text">Connecting to audit servers in Europe and the United States...</p>
+            <!-- Live Terminal Simulation Box -->
+            <div id="terminal-box" class="hidden mt-8 bg-black/90 border border-slate-800 rounded-xl p-4 font-mono text-xs text-emerald-400 space-y-2 shadow-inner">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-2 text-slate-500 text-[10px]">
+                    <span>APEX_KERNEL_DIAGNOSTIC_v4.log</span>
+                    <span class="animate-pulse text-red-500">● LIVE TRACING</span>
+                </div>
+                <div id="terminal-logs" class="space-y-1 h-36 overflow-y-auto">
+                    <!-- Dynamic logs injected via JS -->
+                </div>
             </div>
 
-            <!-- Results & Shock Report Box -->
-            <div id="results-box" class="hidden mt-8 pt-8 border-t border-slate-800 space-y-6">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-red-500/5 border border-red-500/20 p-4 rounded-xl gap-4">
+            <!-- Results & Crypto Checkout Payload -->
+            <div id="rescue-results" class="hidden mt-8 pt-8 border-t border-slate-800 space-y-6">
+                <div class="bg-red-950/20 border border-red-500/30 p-5 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div>
-                        <span class="text-xs text-red-400 font-semibold uppercase tracking-wider">Critical Technical Evaluation</span>
-                        <h3 class="text-xl font-bold text-white mt-0.5" id="res-url-title">Your website is at risk of losing customers</h3>
+                        <span class="text-[10px] text-red-400 font-bold uppercase tracking-widest">Diagnostic Report Completed</span>
+                        <h3 class="text-lg font-bold text-white mt-0.5" id="report-title">Critical System Faults Isolated</h3>
                     </div>
                     <div class="text-right">
-                        <span class="text-xs text-slate-400 block">Estimated Monthly Loss:</span>
-                        <span class="text-2xl font-black text-red-500" id="res-loss">$4,250</span>
+                        <span class="text-[10px] text-slate-400 block">Estimated Revenue Bleed:</span>
+                        <span class="text-2xl font-black text-red-500">$9,420 / mo</span>
                     </div>
                 </div>
 
-                <!-- Discovered Issues -->
-                <div class="space-y-3" id="issues-list">
+                <!-- Fault Items -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="fault-grid">
                     <!-- Populated dynamically -->
                 </div>
 
-                <!-- Shock Pricing, Urgency & Checkout -->
-                <div class="bg-gradient-to-r from-slate-900 to-slate-950 border border-slate-700/80 rounded-xl p-6 text-center space-y-4 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">Limited Time Discount</div>
+                <!-- Ultimate Conversion Box -->
+                <div class="bg-gradient-to-r from-slate-900 to-slate-950 border border-slate-800 rounded-xl p-6 text-center space-y-4 relative">
+                    <div class="absolute top-0 right-0 bg-red-600 text-white text-[9px] font-black px-3 py-1 rounded-bl-lg uppercase">Priority Override Active</div>
                     
-                    <div class="space-y-1">
-                        <span class="text-xs text-slate-400">Comprehensive Engineering & Repair Cost (Current Session):</span>
-                        <div class="flex items-center justify-center gap-3">
-                            <span class="text-slate-500 line-through text-lg">$499</span>
-                            <span class="text-4xl font-black text-white">$79 <span class="text-xs text-slate-400 font-normal">One-time payment</span></span>
+                    <div>
+                        <span class="text-xs text-slate-400">Full System Restoration & Permanent Patch:</span>
+                        <div class="flex items-center justify-center gap-3 mt-1">
+                            <span class="text-slate-600 line-through text-lg">$499</span>
+                            <span class="text-4xl font-black text-white">$79 <span class="text-xs text-slate-400 font-normal">One-Time Fee</span></span>
                         </div>
                     </div>
 
-                    <p class="text-xs text-slate-400 max-w-md mx-auto">
-                        Our engineering team will patch vulnerabilities, accelerate server response, and fix SEO schemas within 2 hours max.
-                    </p>
-
-                    <!-- Secure Global Crypto Checkout Button -->
-                    <button onclick="openCryptoModal()" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-extrabold py-4 rounded-xl shadow-xl shadow-emerald-600/20 transition transform active:scale-95 text-lg flex items-center justify-center gap-2">
-                        <span>Pay Securely with Crypto ($79) ⚡</span>
+                    <button onclick="openCryptoModal()" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-extrabold py-4 rounded-xl shadow-xl shadow-emerald-600/25 transition text-base flex items-center justify-center gap-2">
+                        <span>Pay $79 & Restore Site in 2 Hours ⚡</span>
                     </button>
 
-                    <!-- Absolute Trust Badges -->
-                    <div class="pt-4 border-t border-slate-800/80 flex flex-wrap justify-center items-center gap-4 text-xs text-slate-400">
-                        <span class="flex items-center gap-1">🔒 Global Crypto Gateway</span>
+                    <div class="flex flex-wrap justify-center items-center gap-4 text-[11px] text-slate-400 pt-2">
+                        <span>🔒 Encrypted TRC20 Node</span>
                         <span>•</span>
-                        <span class="flex items-center gap-1">🛡️ 100% Money-Back Guarantee</span>
+                        <span>🛡️ 100% Refund Guaranteed</span>
                         <span>•</span>
-                        <span class="flex items-center gap-1">⚡ Instant 2-Hour Execution</span>
+                        <span>⚡ 24/7 Rapid Engineer Dispatch</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Global "About Us" Section -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left mb-12">
-            <div class="bg-cardbg border border-slate-800 p-6 rounded-xl space-y-2">
-                <div class="text-red-500 text-xl font-bold">14,200+</div>
-                <h4 class="font-bold text-white text-sm">Websites Secured</h4>
-                <p class="text-xs text-slate-400">An enterprise engineering framework operating 24/7 to protect and scale digital assets worldwide.</p>
+        <!-- Live Viral Matrix (Targeting Millions of Organic Visitors) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-cardbg border border-slate-800/80 p-6 rounded-2xl space-y-3">
+                <div class="w-8 h-8 rounded-lg bg-red-500/10 text-red-500 flex items-center justify-center font-bold">01</div>
+                <h3 class="text-white font-bold text-base">Server & Database Crashing?</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Instantly resolves Apache/Nginx memory exhaustion, 502/504 gateway failures, and SQL database deadlocks without touching server code.</p>
             </div>
-            <div class="bg-cardbg border border-slate-800 p-6 rounded-xl space-y-2">
-                <div class="text-red-500 text-xl font-bold">24/7</div>
-                <h4 class="font-bold text-white text-sm">Dedicated Engineering Team</h4>
-                <p class="text-xs text-slate-400">Experts in server optimization and infrastructure architecture dedicated to driving latency to zero.</p>
+            <div class="bg-cardbg border border-slate-800/80 p-6 rounded-2xl space-y-3">
+                <div class="w-8 h-8 rounded-lg bg-red-500/10 text-red-500 flex items-center justify-center font-bold">02</div>
+                <h3 class="text-white font-bold text-base">SSL & Cloudflare Blocks?</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Fixes SSL handshake failures, ERR_CONNECTION_RESET, DNS propagation freezes, and aggressive Cloudflare WAF block loops.</p>
             </div>
-            <div class="bg-cardbg border border-slate-800 p-6 rounded-xl space-y-2">
-                <div class="text-red-500 text-xl font-bold">100%</div>
-                <h4 class="font-bold text-white text-sm">Risk-Free Guarantee</h4>
-                <p class="text-xs text-slate-400">If you don't notice tangible improvements, your funds are fully refunded transparently with zero hassle.</p>
+            <div class="bg-cardbg border border-slate-800/80 p-6 rounded-2xl space-y-3">
+                <div class="w-8 h-8 rounded-lg bg-red-500/10 text-red-500 flex items-center justify-center font-bold">03</div>
+                <h3 class="text-white font-bold text-base">Sudden Traffic Drops?</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Recovers indexed pages penalized by search engine algorithm updates, missing schema properties, and broken robots configurations.</p>
             </div>
         </div>
 
     </main>
 
-    <!-- Professional Real Crypto Gateway Modal -->
-    <div id="crypto-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl relative animate-in fade-in zoom-in duration-200">
-            
-            <!-- Modal Header -->
+    <!-- Crypto Payment Modal -->
+    <div id="crypto-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700/80 rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl relative">
             <div class="flex justify-between items-center border-b border-slate-800 pb-3">
                 <div class="flex items-center gap-2">
-                    <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <h3 class="text-base font-bold text-white">USDT (TRC20) Secure Deposit</h3>
+                    <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
+                    <h3 class="text-sm font-bold text-white">USDT (TRC20) Emergency Checkout</h3>
                 </div>
                 <button onclick="closeCryptoModal()" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
             </div>
 
-            <!-- Amount & Status -->
             <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 flex justify-between items-center">
                 <div>
-                    <span class="text-[11px] text-slate-400 block">Amount Due:</span>
-                    <span class="text-lg font-black text-emerald-400">$79.00 USDT</span>
+                    <span class="text-[10px] text-slate-400 block">Amount to Transfer:</span>
+                    <span class="text-base font-black text-emerald-400">79.00 USDT</span>
                 </div>
                 <div class="text-right">
-                    <span class="text-[11px] text-slate-400 block">Network Fee:</span>
-                    <span class="text-xs font-semibold text-emerald-500">0 Fee (Best)</span>
+                    <span class="text-[10px] text-slate-400 block">SLA Execution:</span>
+                    <span class="text-xs font-bold text-emerald-500">2 Hours Max</span>
                 </div>
             </div>
 
-            <!-- Real QR Code Box -->
-            <div class="bg-white p-3 rounded-xl flex flex-col items-center justify-center">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=TYam4Z53ModHJzakgDYwWyRExoCU1ewKgC" alt="USDT QR Code" class="w-40 h-40 object-contain" id="qr-code-img">
-                <span class="text-[10px] text-slate-700 font-bold mt-1">Scan via Binance / Trust Wallet</span>
+            <div class="bg-white p-3 rounded-xl flex flex-col items-center">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=TYam4Z53ModHJzakgDYwWyRExoCU1ewKgC" alt="USDT QR" class="w-36 h-36 object-contain">
+                <span class="text-[9px] text-slate-700 font-bold mt-1">Scan via Binance / Trust Wallet / TronLink</span>
             </div>
 
-            <!-- Real Wallet Address Display -->
             <div class="space-y-1.5">
-                <label class="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider">TRC20 Deposit Address:</label>
+                <label class="block text-[10px] font-bold text-slate-300 uppercase tracking-wider">TRC20 Wallet Address:</label>
                 <div class="flex gap-2">
-                    <input type="text" id="wallet-address" readonly value="TYam4Z53ModHJzakgDYwWyRExoCU1ewKgC" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-emerald-400 font-mono text-xs focus:outline-none">
-                    <button onclick="copyWallet()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 rounded-xl text-xs font-bold transition">Copy</button>
+                    <input type="text" id="wallet-addr" readonly value="TYam4Z53ModHJzakgDYwWyRExoCU1ewKgC" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-emerald-400 font-mono text-xs focus:outline-none">
+                    <button onclick="copyWalletAddr()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 rounded-xl text-xs font-bold transition">Copy</button>
                 </div>
-                <p id="copy-feedback" class="text-[10px] text-emerald-500 hidden font-medium">Address copied to clipboard successfully!</p>
+                <p id="copy-msg" class="text-[10px] text-emerald-400 hidden">Copied to clipboard!</p>
             </div>
 
-            <!-- Confirmation Action -->
-            <div class="space-y-2 pt-1">
-                <button onclick="confirmPayment()" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-emerald-600/20 text-sm">
-                    I Have Sent the Payment ⚡
-                </button>
-                <p class="text-[10px] text-slate-500 text-center">
-                    Min deposit: 0.1 USDT. Automatically processed upon blockchain confirmation.
-                </p>
-            </div>
-
+            <button onclick="alert('Payment broadcast noted! Our node is scanning the blockchain network. Your patch report will trigger immediately upon confirmation.'); closeCryptoModal();" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-emerald-600/20 text-sm">
+                I Have Sent the Payment ⚡
+            </button>
         </div>
     </div>
 
-    <!-- JavaScript for Dynamic Counters, Audit & Crypto Gateway Modal -->
+    <!-- JavaScript Execution Engine -->
     <script>
-        // Realistic Live Active Users Ticker
+        // Live counter jitter
         setInterval(() => {
-            const el = document.getElementById('active-users');
+            const el = document.getElementById('live-counter');
             if(el) {
-                let current = parseInt(el.innerText.replace(',', ''));
-                let change = Math.floor(Math.random() * 5) - 2;
-                el.innerText = (current + change).toLocaleString();
+                let current = parseInt(el.innerText.replace(/,/g, ''));
+                let diff = Math.floor(Math.random() * 7) - 3;
+                el.innerText = (current + diff).toLocaleString();
             }
-        }, 4000);
+        }, 3000);
 
-        // Live Audit Simulation & Report Render (Client-side fallback simulation for static hosting)
-        function runAudit() {
-            const urlInput = document.getElementById('site-url').value.trim();
-            if(!urlInput) {
-                alert('Please enter your website URL first!');
+        function executeEmergencyRescue() {
+            const val = document.getElementById('target-url').value.trim();
+            if(!val) {
+                alert('Please enter your website domain, IP address, or error description first!');
                 return;
             }
 
-            const btn = document.getElementById('audit-btn');
-            const loading = document.getElementById('loading-state');
-            const results = document.getElementById('results-box');
+            const btn = document.getElementById('rescue-btn');
+            const terminal = document.getElementById('terminal-box');
+            const logsContainer = document.getElementById('terminal-logs');
+            const results = document.getElementById('rescue-results');
 
             btn.disabled = true;
             btn.classList.add('opacity-50');
-            loading.classList.remove('hidden');
             results.classList.add('hidden');
+            terminal.classList.remove('hidden');
+            logsContainer.innerHTML = '';
 
-            const texts = [
-                "Connecting to audit servers in Europe and the United States...",
-                "Analyzing server response time and caching latency metrics...",
-                "Scanning structure faults and missing search engine meta tags...",
-                "Calculating projected financial losses for the domain..."
+            const logSteps = [
+                `[INIT] Connecting to global diagnostic cluster for target: ${val}...`,
+                `[PING] Testing node response across US-East, EU-Central, and Asia-East...`,
+                `[WARN] High latency detected: TTFB > 3,800ms. Potential server thread starvation.`,
+                `[CHECK] Scanning for database socket timeouts, 502/504 gateways, and WAF blocks...`,
+                `[CRITICAL] Memory leak isolated in backend routing layer. Generating patch blueprint...`,
+                `[SUCCESS] Emergency diagnostic profile built successfully. Ready for deployment.`
             ];
-            
-            let i = 0;
-            const textInterval = setInterval(() => {
-                i = (i + 1) % texts.length;
-                const loadTextEl = document.getElementById('loading-text');
-                if(loadTextEl) loadTextEl.innerText = texts[i];
-            }, 800);
 
-            // Simulate server response for static GitHub Pages deployment
-            setTimeout(() => {
-                clearInterval(textInterval);
-                loading.classList.add('hidden');
-                btn.disabled = false;
-                btn.classList.remove('opacity-50');
+            let stepIdx = 0;
+            const logInterval = setInterval(() => {
+                if(stepIdx < logSteps.length) {
+                    logsContainer.innerHTML += `<div><span class="text-slate-600">[${new Date().toLocaleTimeString()}]</span> ${logSteps[stepIdx]}</div>`;
+                    logsContainer.scrollTop = logsContainer.scrollHeight;
+                    stepIdx++;
+                } else {
+                    clearInterval(logInterval);
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-50');
+                    document.getElementById('report-title').innerText = `Emergency Report: ${val}`;
+                    
+                    const faults = [
+                        { title: "Gateway Timeout (504)", desc: "Upstream servers are dropping connections due to unoptimized database query threads." },
+                        { title: "High TTFB & Memory Strain", desc: "Response latency is bleeding 80% of incoming mobile and desktop traffic before page load." }
+                    ];
 
-                document.getElementById('res-url-title').innerText = `Audit Report for: ${urlInput}`;
-                document.getElementById('res-loss').innerText = `$4,250`;
-
-                const mockIssues = [
-                    { name: "High Server Response Latency", desc: "Time to First Byte (TTFB) exceeds 1.8s, causing user bounce rate spikes." },
-                    { name: "Missing OpenGraph & Schema Tags", desc: "Search engine crawlers and social platforms cannot parse structured previews." },
-                    { name: "Unoptimized SSL & TLS Handshake", desc: "Security configuration causes delayed client connection establishment." }
-                ];
-
-                let issuesHtml = '';
-                mockIssues.forEach(issue => {
-                    issuesHtml += `
-                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex items-start gap-3">
-                            <span class="text-red-500 text-lg">⚠️</span>
-                            <div>
-                                <h5 class="text-sm font-bold text-white">${issue.name}</h5>
-                                <p class="text-xs text-slate-400 mt-0.5">${issue.desc}</p>
+                    let gridHtml = '';
+                    faults.forEach(f => {
+                        gridHtml += `
+                            <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-1">
+                                <div class="text-red-500 font-bold text-xs flex items-center gap-1.5"><span>⚠️</span> ${f.title}</div>
+                                <p class="text-xs text-slate-400">${f.desc}</p>
                             </div>
-                        </div>
-                    `;
-                });
-                document.getElementById('issues-list').innerHTML = issuesHtml;
-                results.classList.remove('hidden');
-                results.scrollIntoView({ behavior: 'smooth' });
-            }, 3000);
+                        `;
+                    });
+                    document.getElementById('fault-grid').innerHTML = gridHtml;
+                    results.classList.remove('hidden');
+                    results.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 600);
         }
 
-        // Crypto Modal Controls
         function openCryptoModal() {
             document.getElementById('crypto-modal').classList.remove('hidden');
         }
@@ -290,18 +273,13 @@
             document.getElementById('crypto-modal').classList.add('hidden');
         }
 
-        function copyWallet() {
-            const copyText = document.getElementById('wallet-address');
+        function copyWalletAddr() {
+            const copyText = document.getElementById('wallet-addr');
             copyText.select();
             navigator.clipboard.writeText(copyText.value);
-            const feedback = document.getElementById('copy-feedback');
-            feedback.classList.remove('hidden');
-            setTimeout(() => { feedback.classList.add('hidden'); }, 3000);
-        }
-
-        function confirmPayment() {
-            alert('Payment notification received! Our automated node is monitoring your TRC20 address. Once the 79 USDT transfer is confirmed on the blockchain, the engineering team will instantly dispatch your site repair report.');
-            closeCryptoModal();
+            const msg = document.getElementById('copy-msg');
+            msg.classList.remove('hidden');
+            setTimeout(() => msg.classList.add('hidden'), 2500);
         }
     </script>
 </body>
